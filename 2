@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+int maxS(int* nums, int numsSize)
+{
+	int max = INT_MIN;
+	int i, j, sum;
+	for (i = 0; i < numsSize; i++)
+	{
+		sum = 0;
+		for (j = i; j < numsSize; j++)
+		{
+			sum = nums[j] + sum;
+			if (sum > max)
+				max = sum;
+		}
+		printf("第%d轮最大值为:%d \n", i, max);
+	}
+	return max;
+}
+int main()
+{
+	
+	int i=0, m, a[20] = {0};
+	scanf("%d/n",&m);
+	for (i = 0; i < m; i++)
+	{
+		scanf("%d,", &a[i]);
+	}
+	int n = maxS(a, m);
+	printf("原数组为：");
+	for (i = 0; i < m; i++)
+		printf("%d ", a[i]);
+	if (n < 0)  n = 0;
+	printf("最大子数组和为 %d\n", n);
+	return 0;
+
+}
